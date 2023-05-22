@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build Docker image') {
+            steps {
+                sh "docker compose up"
+            }
+        }
+        
+        stage('Cleanup') {
+            steps {
+                sh 'docker rmi lab3:latest'
+            }
+        }
+    }
+}
